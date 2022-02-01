@@ -22,6 +22,8 @@ namespace User_Registration_Using_Lambda
             ValidatePhoneNum();
             Console.WriteLine("Password Validation-Rule1=min 8 Chars");
             ValidatePassWord();
+            Console.WriteLine("Password Validation-Rule2 at least one Upper casee");
+            ValidatePassWord();
 
         }
 
@@ -97,14 +99,15 @@ namespace User_Registration_Using_Lambda
         //Uc-5 validating password -Rule-1
         public void ValidatePassWord()
         {
-            string passwordEx = @"[a-z,A-Z,0-9]{8,}$";
+            // string passwordEx = @"[a-z,A-Z,0-9]{8,}$";
+            string passwordEx = @"^(?=.*[A-Z]).{8,}$";
             Regex regex = new Regex(passwordEx);
             Console.WriteLine("Enter password minimum 8 characters");
             string password = Console.ReadLine();
             bool res = regex.IsMatch(password);
             if (res)
             {
-                Console.WriteLine("Password valid");
+                Console.WriteLine("Password ruel-1 valid");
             }
             else
             {
