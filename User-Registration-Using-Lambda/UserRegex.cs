@@ -7,7 +7,23 @@ namespace User_Registration_Using_Lambda
 {
     public class UserRegex
     {
-        string pattern = "^[A-Za-z]{3,}$";
+        public string message;
+        public static string firstName;
+        public static string lastName;
+        public static string email;
+        public static string phoneNum;
+        public static string paasword;
+        string pattern = "^[A-Z][a-z]{3,}$";
+
+        public UserRegex()
+        {
+            Console.WriteLine("Default Constructor");
+        }
+        public UserRegex(string message)
+        {
+            this.message = message;
+        }
+       
 
         public void ValidatingAllFields()
         {
