@@ -64,7 +64,8 @@ namespace User_Registration_Using_Lambda
 
 
         //uc-1 Validate First Name
-        public static string ValidateFirstName(string firstName)
+        //Using Lambda Expression 
+        public static Func<string, string> ValidateFirstName = (e) =>
         {
             Regex regex = new Regex("^[A-Z][a-z]{2,}$");
             bool res = regex.IsMatch(firstName);
@@ -94,11 +95,12 @@ namespace User_Registration_Using_Lambda
                 return ex.Message;
 
             }
-        }
+        };
 
 
         //uc-2 Validate Last Name
-        public static string ValidateLastName(string lastName)
+        //using LAmbda Expression
+        public static Func<string, string> ValidateLastName = (e) =>
         {
             string pattern = "^[A-Z][a-z]{2,}$";
             Regex regex = new Regex(pattern);
@@ -129,12 +131,13 @@ namespace User_Registration_Using_Lambda
                 return ex.Message;
             }
 
-        }
+        };
 
 
 
         //uc-3 Validate Email Address
-        public static string ValidateEmail(string email)
+        //using LAmbda Expression
+        public static Func<string, string> ValidateEmail = (email) =>
         {
 
             string emailPattern = (@"^[a-zA-Z0-9]+([\.\+\-][a-zA-Z0-9]+)?@[a-zA-Z0-9-]+(\.[a-zA-Z]{2,}(\.[a-zA-Z]+)?)$");
@@ -170,9 +173,10 @@ namespace User_Registration_Using_Lambda
                 return ex.Message;
             }
 
-        }
+        };
         //uc-4 Validate Phone Number
-        public static string ValidatePhoneNum(string phoneNum)
+        //using LAmbda Expression
+        public static Func<string, string> ValidatePhoneNum = (phoneNum) =>
         {
 
             string[] phoneNumInput = { "91 7852234896", " 91 9865741548", "919865795312", "91@123", "A865" };
@@ -204,18 +208,19 @@ namespace User_Registration_Using_Lambda
             {
                 return ex.Message;
             }
-        }
+        };
 
         //Uc-5 validating password -Rule-1
         //uc-6 Rule-2 validated
         //uc-7 rule -3 one digit
         //uc-8 Rule -4 one special character 
-        public static string ValidatePassWord(string password)
+        //using LAmbda Expression
+        public static Func<string, string> ValidatePassWord = (password) =>
         {
             // string passwordEx = @"[a-z,A-Z,0-9]{8,}$";
             //string passwordEx = @"^(?=.*[A-Z]).{8,}$";
             // string passwordEx = @"^[0-9]+[\s]+[0-9]{10}$";
-          
+
             string passwordPattern = @"(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?!.*[<>`])(?=[^.,:;'!@#$%^&*_+=|(){}[?\-\]\/\\]*[.,:;'!@#$%^&*_+=|(){}[?\-\]\/\\][^.,:;'!@#$%^&*_+=|(){}[?\-\]\/\\]*$).{8,}$";
 
             Regex regex = new Regex(passwordPattern);
@@ -232,7 +237,7 @@ namespace User_Registration_Using_Lambda
             }
 
             return default;
-        }
+        };
         //uc-9 clear all email samples
         public void ClearEmailAllPass()
         {
