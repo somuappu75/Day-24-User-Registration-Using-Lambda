@@ -26,5 +26,20 @@ namespace User_Registration_Using_Lambda
                 Console.WriteLine("FirstName Invalid");
             }
         }
+        public void ValidatingLastName()
+        {
+            Regex regex = new Regex(pattern);
+            Console.WriteLine("Enter the last name : ");
+            string input1 = Console.ReadLine();
+            bool res1 = regex.IsMatch(input1);
+            if (res1)
+            {
+                Console.WriteLine("LastName Valid");
+            }
+            else
+            {
+                Console.WriteLine("LastName Invalid--");
+            }
+        }
     }
 }
