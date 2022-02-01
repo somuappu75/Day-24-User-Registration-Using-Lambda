@@ -9,9 +9,9 @@ namespace User_Registration_Using_Lambda
             Console.WriteLine("-----------------------------------------------------------------------------------------------");
             Console.WriteLine("----------------------------User Registration Problem Using Regular Expression-----------------");
             Console.WriteLine("------------------------------------------------------------------------------------------------");
+            //uc-4 phone number validated
             UserRegex user = new UserRegex();
-            user.ValidatingFirstName();
-            user.ValidatingLastName();
+            user.ValidatingAllFields();
             
         }
     }
