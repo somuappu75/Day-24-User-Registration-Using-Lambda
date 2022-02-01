@@ -11,6 +11,7 @@ namespace User_Registration_Using_Lambda
             Console.WriteLine("------------------------------------------------------------------------------------------------");
             UserRegex user = new UserRegex();
             user.ValidatingFirstName();
+            user.ValidatingLastName();
             
         }
     }
