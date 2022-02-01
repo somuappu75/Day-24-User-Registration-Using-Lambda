@@ -68,74 +68,142 @@ namespace User_Registration_Using_Lambda
         {
             Regex regex = new Regex("^[A-Z][a-z]{2,}$");
             bool res = regex.IsMatch(firstName);
-            if (res)
+            try
             {
-                Console.WriteLine("First Name Valid");
-                return firstName;
+                if (firstName.Equals(""))
+                {
+                    throw new CustomException(CustomException.ExceptionType.EMPTY_MESSAGE, "First name should not be empty");
+                }
+                if (firstName.Equals(null))
+                {
+                    throw new CustomException(CustomException.ExceptionType.NULL_MESSAGE, "Last name should not be null");
+                }
+                if (res)
+                {
+                    Console.WriteLine("Valid");
+                    return firstName;
+                }
+                else
+                {
+                    throw new CustomException(CustomException.ExceptionType.INVALID_MESSAGE, "First should be valid"); throw new CustomException(CustomException.ExceptionType.INVALID_MESSAGE, "First should be valid");
+                }
+
             }
-            else
+            catch (NullReferenceException ex)
             {
-                Console.WriteLine("First Name Invalid");
+                return ex.Message;
+
             }
-            return default;
         }
+
+
         //uc-2 Validate Last Name
         public static string ValidateLastName(string lastName)
         {
             string pattern = "^[A-Z][a-z]{2,}$";
             Regex regex = new Regex(pattern);
             bool res1 = regex.IsMatch(lastName);
-            if (res1)
+            try
             {
-                Console.WriteLine("Last Name Valid");
-                return lastName;
+                if (lastName.Equals(""))
+                {
+                    throw new CustomException(CustomException.ExceptionType.EMPTY_MESSAGE, "Last name should not be empty");
+                }
+                if (lastName.Equals(null))
+                {
+                    throw new CustomException(CustomException.ExceptionType.NULL_MESSAGE, "Last name should not be null");
+                }
+                if (res1)
+                {
+                    Console.WriteLine("Valid");
+                    return lastName;
+                }
+                else
+                {
+                    throw new CustomException(CustomException.ExceptionType.INVALID_MESSAGE, "Last name should be valid");
+                }
+                //return default;
             }
-            else
+            catch (NullReferenceException ex)
             {
-                Console.WriteLine(" alst Name Invalid");
+                return ex.Message;
             }
-            return default;
 
         }
+
+
+
         //uc-3 Validate Email Address
         public static string ValidateEmail(string email)
         {
 
             string emailPattern = (@"^[a-zA-Z0-9]+([\.\+\-][a-zA-Z0-9]+)?@[a-zA-Z0-9-]+(\.[a-zA-Z]{2,}(\.[a-zA-Z]+)?)$");
             Regex regex = new Regex(emailPattern);
-           
+            // for (int i = 0; i < emailInput.Length; i++)
+            //{
             bool result = regex.IsMatch(email);
-            if (result)
+            try
             {
-                Console.WriteLine(email + " -----> Email Is Valid");
-                return email;
+                if (email.Equals(""))
+                {
+                    throw new CustomException(CustomException.ExceptionType.EMPTY_MESSAGE, "Email Id should not be empty");
+                }
+                if (email.Equals(null))
+                {
+                    throw new CustomException(CustomException.ExceptionType.NULL_MESSAGE, "Email Id should not be null");
+                }
+
+                if (result)
+                {
+                    Console.WriteLine(email + " -----> Enter Email Valid");
+                    return email;
+                }
+                else
+                {
+                    throw new CustomException(CustomException.ExceptionType.INVALID_MESSAGE, "Email Id valid");
+                }
+
+                //return default;
             }
-            else
+            catch (NullReferenceException ex)
             {
-                Console.WriteLine(email + " ----->Please Enter EMail Adderess Again!!!!");
+                return ex.Message;
             }
 
-            return default;
         }
-
         //uc-4 Validate Phone Number
         public static string ValidatePhoneNum(string phoneNum)
         {
-           
-            string phoneNumEx = @"^[0-9]+[\s]+[0-9]{10}$";
-            Regex regex = new Regex(phoneNumEx);
+
+            string[] phoneNumInput = { "91 7852234896", " 91 9865741548", "919865795312", "91@123", "A865" };
+            string phoneNumPattern = @"^[0-9]+[\s]+[0-9]{10}$";
+            Regex regex = new Regex(phoneNumPattern);
 
             bool result = regex.IsMatch(phoneNum);
-            if (result)
+            try
             {
-                Console.WriteLine("Phone Number VAlidated");
-                return phoneNum;
+                if (phoneNum.Equals(""))
+                {
+                    throw new CustomException(CustomException.ExceptionType.EMPTY_MESSAGE, "Phone number should not be empty");
+                }
+                if (phoneNum.Equals(null))
+                {
+                    throw new CustomException(CustomException.ExceptionType.NULL_MESSAGE, "Phone number should not be null");
+                }
+                if (result)
+                {
+                    Console.WriteLine(phoneNum + " -----> number isValid");
+                    return phoneNum;
+                }
+                else
+                {
+                    throw new CustomException(CustomException.ExceptionType.INVALID_MESSAGE, "Phone number should be valid");
+                }
             }
-            else
+            catch (NullReferenceException ex)
             {
-                Console.WriteLine(phoneNum + " -----> Please Enter with Country Code --InValid");
+                return ex.Message;
             }
-            return default;
         }
 
         //Uc-5 validating password -Rule-1
