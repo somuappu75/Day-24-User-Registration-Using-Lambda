@@ -18,11 +18,13 @@ namespace User_Registration_Using_Lambda
             ValidatingLastName();
             Console.WriteLine("The Email Address Validating");
             ValidateEmail();
+            Console.WriteLine("Enter the Phone Number(Start With Country Code)");
+            ValidatePhoneNum();
 
         }
 
 
-
+        //uc-1 Validate First Name
         public void ValidatingFirstName()
         {
             Regex Regex = new Regex(pattern);
@@ -38,6 +40,7 @@ namespace User_Registration_Using_Lambda
                 Console.WriteLine("FirstName Invalid");
             }
         }
+        //uc-2 Validate Last Name
         public void ValidatingLastName()
         {
             Regex regex = new Regex(pattern);
@@ -53,7 +56,7 @@ namespace User_Registration_Using_Lambda
                 Console.WriteLine("LastName Invalid--");
             }
         }
-
+        //uc-3 Validate Email Address
         public void ValidateEmail()
         {
             string emailPattern = (@"^[a-zA-Z0-9]+([\.\+\-][a-zA-Z0-9]+)?@[a-zA-Z0-9-]+(\.[a-zA-Z]{2,}(\.[a-zA-Z]+)?)$");
@@ -70,6 +73,25 @@ namespace User_Registration_Using_Lambda
                 Console.WriteLine("Please enter a Valid Email!");
             }
         }
+
+        //uc-4 Validate Phone Number
+        public void ValidatePhoneNum()
+        {
+            string phoneNumPattern = @"^[0-9]+[\s]+[0-9]{10}$";
+            Regex regex = new Regex(phoneNumPattern);
+            Console.WriteLine("Enter valid Phone Number");
+            string phoneNumber = Console.ReadLine();
+            bool res = regex.IsMatch(phoneNumber);
+            if (res)
+            {
+                Console.WriteLine("valid email address");
+            }
+            else
+            {
+                Console.WriteLine("Please enter a Valid Email!");
+            }
+        }
     }
-    }
+}
+
 
