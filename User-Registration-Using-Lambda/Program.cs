@@ -13,6 +13,7 @@ namespace User_Registration_Using_Lambda
             //Uc-5 validating password -Rule-1 added
             //Uc-6 validating password -Rule-2 added
             //uc-7 validating password rule -3 atlest one digit added
+            //uc-8 rule 4 added-one speacial character
 
             UserRegex user = new UserRegex();
             user.ValidatingAllFields();

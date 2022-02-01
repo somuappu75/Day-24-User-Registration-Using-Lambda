@@ -99,11 +99,13 @@ namespace User_Registration_Using_Lambda
         //Uc-5 validating password -Rule-1
         //uc-6 Rule-2 validated
         //uc-7 rule -3 one digit
+        //uc-8 Rule -4 one special character 
         public void ValidatePassWord()
         {
             // string passwordEx = @"[a-z,A-Z,0-9]{8,}$";
             //string passwordEx = @"^(?=.*[A-Z]).{8,}$";
-            string passwordEx = @"^[0-9]+[\s]+[0-9]{10}$";
+            // string passwordEx = @"^[0-9]+[\s]+[0-9]{10}$";
+            string passwordEx = @"(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?!.*[<>`])(?=[^.,:;'!@#$%^&*_+=|(){}[?\-\]\/\\]*[.,:;'!@#$%^&*_+=|(){}[?\-\]\/\\][^.,:;'!@#$%^&*_+=|(){}[?\-\]\/\\]*$).{8}$";
             Regex regex = new Regex(passwordEx);
             Console.WriteLine("Enter password minimum 8 characters");
             string password = Console.ReadLine();
