@@ -6,6 +6,7 @@ namespace User_Registration_Using_Lambda
 {
     public class CustomException:Exception
     {
+        //Exception andling Custom
         ExceptionType type;
         public string message;
 
