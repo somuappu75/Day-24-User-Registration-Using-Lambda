@@ -20,6 +20,10 @@ namespace User_Registration_Using_Lambda
             ValidateEmail();
             Console.WriteLine("Enter the Phone Number(Start With Country Code)");
             ValidatePhoneNum();
+            Console.WriteLine("Password Validation-Rule1=min 8 Chars");
+            ValidatePassWord();
+            Console.WriteLine("Password Validation-Rule2 at least one Upper casee");
+            ValidatePassWord();
 
         }
 
@@ -84,14 +88,32 @@ namespace User_Registration_Using_Lambda
             bool res = regex.IsMatch(phoneNumber);
             if (res)
             {
-                Console.WriteLine("valid email address");
+                Console.WriteLine("Phone Number Valid");
             }
             else
             {
-                Console.WriteLine("Please enter a Valid Email!");
+                Console.WriteLine("Please enter a Valid Phone Number!");
+            }
+        }
+
+        //Uc-5 validating password -Rule-1
+        public void ValidatePassWord()
+        {
+            // string passwordEx = @"[a-z,A-Z,0-9]{8,}$";
+            string passwordEx = @"^(?=.*[A-Z]).{8,}$";
+            Regex regex = new Regex(passwordEx);
+            Console.WriteLine("Enter password minimum 8 characters");
+            string password = Console.ReadLine();
+            bool res = regex.IsMatch(password);
+            if (res)
+            {
+                Console.WriteLine("Password ruel-1 valid");
+            }
+            else
+            {
+                Console.WriteLine("invalid password!!");
             }
         }
     }
 }
-
 
