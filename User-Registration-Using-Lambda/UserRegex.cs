@@ -5,119 +5,149 @@ using System.Text.RegularExpressions;
 
 namespace User_Registration_Using_Lambda
 {
-    class UserRegex
+    public class UserRegex
     {
         string pattern = "^[A-Za-z]{3,}$";
 
         public void ValidatingAllFields()
         {
+            Console.WriteLine("-----------## Validating all Fielsds##---------------");
             Regex regex = new Regex(pattern);
-            Console.WriteLine("First Name Validating");
-            ValidatingFirstName();
-            Console.WriteLine("Last Name Validating");
-            ValidatingLastName();
-            Console.WriteLine("The Email Address Validating");
-            ValidateEmail();
-            Console.WriteLine("Enter the Phone Number(Start With Country Code)");
-            ValidatePhoneNum();
-            Console.WriteLine("Password Validation-Rule1=min 8 Chars");
-            ValidatePassWord();
-            Console.WriteLine("Password Validation-Rule2 at least one Upper casee");
-            ValidatePassWord();
+            Console.WriteLine("--------------------------");
+            Console.WriteLine(" ");
+            Console.WriteLine("Validating The First Name");
+            Console.WriteLine("Enter the first name : ");
+            string Firststname1 = Console.ReadLine();
+            ValidateFirstName(Firststname1);
+            Console.WriteLine("--------------------------");
+            Console.WriteLine(" ");
+            Console.WriteLine("Validating The Last Name");
+            Console.WriteLine("Enter the last name : ");
+            string Lastname1 = Console.ReadLine();
+            ValidateLastName(Lastname1);
+            Console.WriteLine("--------------------------");
+            Console.WriteLine(" ");
+            Console.WriteLine("Validating The Email Id");
+            Console.WriteLine("Enter Email Id");
+            string Email1 = Console.ReadLine();
+            ValidateEmail(Email1);
+            Console.WriteLine("--------------------------");
+            Console.WriteLine(" ");
+            Console.WriteLine("Validating The Phone Number");
+            Console.WriteLine("Enter the phone number");
+            string number = Console.ReadLine();
+            ValidatePhoneNum(number);
+            Console.WriteLine("--------------------------");
+            Console.WriteLine(" ");
+            Console.WriteLine("Validating The Password");
+            Console.WriteLine("Enter the password");
+            string Pass= Console.ReadLine();
+            ValidatePassWord(Pass);
 
         }
 
 
         //uc-1 Validate First Name
-        public void ValidatingFirstName()
+        public static string ValidateFirstName(string firstName)
         {
-            Regex Regex = new Regex(pattern);
-            Console.WriteLine("Enter the first name:");
-            string input = Console.ReadLine();
-            bool res = Regex.IsMatch(input);
+            Regex regex = new Regex("^[A-Z][a-z]{2,}$");
+            bool res = regex.IsMatch(firstName);
             if (res)
             {
-                Console.WriteLine("FirstName Valid");
+                Console.WriteLine("First Name Valid");
+                return firstName;
             }
             else
             {
-                Console.WriteLine("FirstName Invalid");
+                Console.WriteLine("First Name Invalid");
             }
+            return default;
         }
         //uc-2 Validate Last Name
-        public void ValidatingLastName()
+        public static string ValidateLastName(string lastName)
         {
+            string pattern = "^[A-Z][a-z]{2,}$";
             Regex regex = new Regex(pattern);
-            Console.WriteLine("Enter the last name : ");
-            string input1 = Console.ReadLine();
-            bool res1 = regex.IsMatch(input1);
+            bool res1 = regex.IsMatch(lastName);
             if (res1)
             {
-                Console.WriteLine("LastName Valid");
+                Console.WriteLine("Last Name Valid");
+                return lastName;
             }
             else
             {
-                Console.WriteLine("LastName Invalid--");
+                Console.WriteLine(" alst Name Invalid");
             }
+            return default;
+
         }
         //uc-3 Validate Email Address
-        public void ValidateEmail()
+        public static string ValidateEmail(string email)
         {
+
             string emailPattern = (@"^[a-zA-Z0-9]+([\.\+\-][a-zA-Z0-9]+)?@[a-zA-Z0-9-]+(\.[a-zA-Z]{2,}(\.[a-zA-Z]+)?)$");
             Regex regex = new Regex(emailPattern);
-            Console.WriteLine("Enter email Id");
-            string emails = Console.ReadLine();
-            bool res = regex.IsMatch(emails);
-            if (res)
+           
+            bool result = regex.IsMatch(email);
+            if (result)
             {
-                Console.WriteLine("valid email address");
+                Console.WriteLine(email + " -----> Email Is Valid");
+                return email;
             }
             else
             {
-                Console.WriteLine("Please enter a Valid Email!");
+                Console.WriteLine(email + " ----->Please Enter EMail Adderess Again!!!!");
             }
+
+            return default;
         }
 
         //uc-4 Validate Phone Number
-        public void ValidatePhoneNum()
+        public static string ValidatePhoneNum(string phoneNum)
         {
-            string phoneNumPattern = @"^[0-9]+[\s]+[0-9]{10}$";
-            Regex regex = new Regex(phoneNumPattern);
-            Console.WriteLine("Enter valid Phone Number");
-            string phoneNumber = Console.ReadLine();
-            bool res = regex.IsMatch(phoneNumber);
-            if (res)
+           
+            string phoneNumEx = @"^[0-9]+[\s]+[0-9]{10}$";
+            Regex regex = new Regex(phoneNumEx);
+
+            bool result = regex.IsMatch(phoneNum);
+            if (result)
             {
-                Console.WriteLine("Phone Number Valid");
+                Console.WriteLine("Phone Number VAlidated");
+                return phoneNum;
             }
             else
             {
-                Console.WriteLine("Please enter a Valid Phone Number!");
+                Console.WriteLine(phoneNum + " -----> Please Enter with Country Code --InValid");
             }
+            return default;
         }
 
         //Uc-5 validating password -Rule-1
         //uc-6 Rule-2 validated
         //uc-7 rule -3 one digit
         //uc-8 Rule -4 one special character 
-        public void ValidatePassWord()
+        public static string ValidatePassWord(string password)
         {
             // string passwordEx = @"[a-z,A-Z,0-9]{8,}$";
             //string passwordEx = @"^(?=.*[A-Z]).{8,}$";
             // string passwordEx = @"^[0-9]+[\s]+[0-9]{10}$";
-            string passwordEx = @"(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?!.*[<>`])(?=[^.,:;'!@#$%^&*_+=|(){}[?\-\]\/\\]*[.,:;'!@#$%^&*_+=|(){}[?\-\]\/\\][^.,:;'!@#$%^&*_+=|(){}[?\-\]\/\\]*$).{8}$";
-            Regex regex = new Regex(passwordEx);
-            Console.WriteLine("Enter password minimum 8 characters");
-            string password = Console.ReadLine();
-            bool res = regex.IsMatch(password);
-            if (res)
+          
+            string passwordPattern = @"(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?!.*[<>`])(?=[^.,:;'!@#$%^&*_+=|(){}[?\-\]\/\\]*[.,:;'!@#$%^&*_+=|(){}[?\-\]\/\\][^.,:;'!@#$%^&*_+=|(){}[?\-\]\/\\]*$).{8,}$";
+
+            Regex regex = new Regex(passwordPattern);
+
+            bool result = regex.IsMatch(password);
+            if (result)
             {
-                Console.WriteLine("Password ruel-4 valid");
+                Console.WriteLine("Password IS VAlid ");
+                return password;
             }
             else
             {
-                Console.WriteLine("invalid password!!");
+                Console.WriteLine("Password Is --InValid");
             }
+
+            return default;
         }
         //uc-9 clear all email samples
         public void ClearEmailAllPass()
