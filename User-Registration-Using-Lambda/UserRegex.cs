@@ -112,11 +112,27 @@ namespace User_Registration_Using_Lambda
             bool res = regex.IsMatch(password);
             if (res)
             {
-                Console.WriteLine("Password ruel-1 valid");
+                Console.WriteLine("Password ruel-4 valid");
             }
             else
             {
                 Console.WriteLine("invalid password!!");
+            }
+        }
+        //uc-9 clear all email samples
+        public void ClearEmailAllPass()
+        {
+            string EmailAllSample= "^[0-9a-zA-Z]+[.+-_]{0,1}[0-9a-zA-Z]+[@][0-9a-zA-Z]+.[a-zA-Z]{2,3}(.[a-zA-Z]{2})?$";
+            Regex regex = new Regex(EmailAllSample);
+            string EmailAll = Console.ReadLine();
+            bool res = regex.IsMatch(EmailAllSample);
+            if(res)
+            {
+                Console.WriteLine("Email All CElae Passes");
+            }
+            else
+            {
+                Console.WriteLine("Enter A Email Again");
             }
         }
     }
