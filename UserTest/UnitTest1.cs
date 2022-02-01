@@ -71,6 +71,14 @@ namespace UserTest
             var actual = UserRegex.ValidatePassWord(a);
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        public void Test_Method_Parameteized_Constructor()
+        {
+            object expected = new UserRegex("RegularExpression");
+            UserFactory factory = new UserFactory();
+            object actual = factory.Test_Method_Parameteized_Constructor("UserRegistration.RegexSample", "RegexSample", "RegularExpression");
+            actual.Equals(expected);
+        }
 
     }
 
